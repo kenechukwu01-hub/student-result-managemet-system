@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}<section class="formpanel"><p class="eyebrow">STUDENT MANAGEMENT</p><h1>{{ "Update student" if student else "Register a student" }}</h1><form method="post" class="grid">
+{% if not student %}<label>Student ID<input name="student_id" required placeholder="ST001"></label>{% else %}<label>Student ID<input value="{{ student.student_id }}" disabled></label>{% endif %}
+<label>Full name<input name="full_name" required value="{{ student.full_name if student else '' }}"></label>
+<label>Class/Form<input name="class_form" required value="{{ student.class_form if student else '' }}"></label>
+<label>Gender<input name="gender" required value="{{ student.gender if student else '' }}"></label>
+<label>Date of birth<input type="date" name="date_of_birth" required value="{{ student.date_of_birth if student else '' }}"></label>
+<div class="buttons"><button class="button primary">Save student</button><a class="button secondary" href="{{ url_for('index') }}">Cancel</a></div></form></section>{% endblock %}
